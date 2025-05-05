@@ -1,9 +1,12 @@
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
 import { migrate } from "drizzle-orm/neon-http/migrator";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL is not set in .env.local");
+  throw new Error("DATABASE_URL is not set in .env");
 }
 
 async function runMigration() {
